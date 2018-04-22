@@ -1,0 +1,37 @@
+
+  <div *ngIf="showSuccess?.value" class="alert alert-success" role="alert">
+      <strong>Well done!</strong> You successfully added the transaction.
+    </div>
+<div class="dashboard-card">  
+  <div id="add-row">
+    <h2>Products</h2>
+    <!-- <a [routerLink]=""  class="btn btn-default float-right add-farmer-button" id="addProduct"  (click)="addFruit()">เพิ่มสินค้า</a> -->
+    <div class="clearfix"></div>
+  </div>
+  <div class="row">
+    <div class="farmer-all-card">
+      <div class="farmer-card" *ngFor="let product of products">
+        <a>
+          <div class="farmer-image">
+
+            <img src="{{product.imageLocation}}" alt="{{product.name}}">
+          </div>
+          <div class="farmer-detail">
+            <h5 class="farmer-name">{{product.name}}</h5>
+
+            <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="province">{{product.description}}</p>
+            <div class="col text-right">
+              <h6 class="farmer-name">Price is {{product.price | number:'.2-2'}} THB</h6>
+            </div>
+            <div *ngIf="!isSelectedProduct(product)" class="col text-center">
+              <button  type="button" class="btn btn-outline-primary" (click)="addProduct(product)"> add to cart</button>
+            </div>
+            <div *ngIf="isSelectedProduct(product)" class="col text-center">
+              <button  type="button" class="btn btn-outline-danger" disabled> already added</button>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
